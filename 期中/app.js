@@ -18,7 +18,6 @@ router.get('/', list)
   .get('/post/new', add)
   .get('/post/:id', show)
   .post('/post', create)
-  .get('/del/:id', del)
 
 const app = new Application()
 app.use(Session.initMiddleware())
@@ -128,18 +127,6 @@ async function show(ctx) {
   console.log('show:post=', post)
   if (!post) ctx.throw(404, '文章已被刪除');
   ctx.response.body = await render.show(post);
-}
-
-async function del(ctx) {
-  
-  const id = ctx.params.id;
-  
-  
-  const result = sqlcmd(`DELETE FROM posts WHERE id=?`, [id]);
-  
-  
-  ctx.response.body = result;
-  ctx.response.redirect("/");
 }
 
 async function create(ctx) {
