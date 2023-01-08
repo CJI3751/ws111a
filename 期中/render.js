@@ -136,7 +136,6 @@ export function newPost() {
     <p><textarea placeholder="內容" name="body"></textarea></p>
     <p><input type="submit" value="建立"></p>
   </form>
-  <p><a href="JavaScript:window.history.back()">回上一頁</a></p> 
   `)
 }
 
@@ -144,7 +143,5 @@ export function show(post) {
   return layout(post.title, `
     <h1>${post.title} -- by ${post.username}</h1>
     <p>${post.body}</p>
-    <p><a href="/del/${post.id}">刪除貼文</a></p>
-    <p><a href="JavaScript:window.history.back()">回上一頁</a></p> 
   `)
 }
